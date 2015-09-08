@@ -1,0 +1,30 @@
+.container {
+    width: 768px;
+    margin: 0 auto;
+}
+
+.checked {
+    color: lightgray;
+    text-decoration: line-through;
+}
+
+.hidden {
+    display: none;
+}
+
+#editForm {
+    display: inline-block;
+}
+
+#toDoList {
+    list-style: none;
+    padding: 0;
+}
+
+span {
+    margin: 5px 15px;
+}
+
+button {
+    margin: 3px;
+}
