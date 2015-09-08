@@ -1,19 +1,32 @@
 body {
     background-color: black;
     margin: 0;
-    padding: 0;
+    padding: 30px 0 0 0;
 }
 
 .container {
     width: 768px;
-    min-height: 629px;
     margin: 0 auto;
-    background-color: orange;
     padding: 15px;
 }
 
+.container-top {
+    color: orange;
+}
+
+.container-top h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.container-bottom {
+    min-height: 450px;
+    background-color: lightgray;
+    border-radius: 3px;
+}
+
 .checked {
-    color: lightgray;
+    color: dimgrey;
     text-decoration: line-through;
 }
 
@@ -25,9 +38,14 @@ body {
     display: inline-block;
 }
 
+#toDoForm {
+    margin: 5px 0 20px;
+}
+
 #toDoList {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 span {
