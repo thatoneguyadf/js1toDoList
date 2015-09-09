@@ -55,3 +55,11 @@ span {
 button {
     margin: 3px;
 }
+
+input, button {
+    padding: 3px;
+}
+
+li input {
+    margin: 3px;
+}

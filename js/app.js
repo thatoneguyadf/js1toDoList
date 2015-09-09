@@ -76,6 +76,7 @@ list.addEventListener('submit', function (evt) {
     var span = e('span', text);
 
     li.replaceChild(span, edited);
+    li.childNodes[0].disabled = false;
     li.childNodes[2].classList.remove('hidden');
 });
 
@@ -150,6 +151,7 @@ function editLi(item) {
     item.classList.add('hidden');
     editForm.appendChild(editField);
     editForm.appendChild(editSubmit);
+    li.childNodes[0].disabled = true;
     li.replaceChild(editForm, li.childNodes[1]);
 }
 
