@@ -10,12 +10,15 @@ form.addEventListener('submit', function (evt) {
     evt.preventDefault();
 
     var toDoItem = form.toDoItem.value;
-    form.toDoItem.value = '';
 
-    toDoItem = [toDoItem, false];
-    toDoArray.push(toDoItem);
-    localStorage.setItem('listItems', JSON.stringify(toDoArray));
-    makeLis();
+    if (toDoItem !== '') {
+        form.toDoItem.value = '';
+
+        toDoItem = [toDoItem, false];
+        toDoArray.push(toDoItem);
+        localStorage.setItem('listItems', JSON.stringify(toDoArray));
+        makeLis();
+    }
 });
 
 //listens for clicks on lis and call corresponding functions
@@ -58,11 +61,19 @@ list.addEventListener('submit', function (evt) {
     var li = edited.parentElement;
     var replace = li.getAttribute('rel');
     var text = edited.toDoItem.value;
+
+    if (text === '') {
+
+        text = edited.getAttribute('rel');
+    }
+    else {
+
+        toDoArray[replace].splice(0, 1, text);
+
+        localStorage.listItems = JSON.stringify(toDoArray);
+    }
+
     var span = e('span', text);
-
-    toDoArray[replace].splice(0, 1, text);
-
-    localStorage.listItems = JSON.stringify(toDoArray);
 
     li.replaceChild(span, edited);
     li.childNodes[2].classList.remove('hidden');
