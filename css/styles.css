@@ -64,3 +64,8 @@ input, button {
 li input {
     margin: 3px;
 }
+
+footer {
+    color: lightgray;
+    font-size: 0.9em;
+}
