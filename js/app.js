@@ -12,6 +12,7 @@ form.addEventListener('submit', function (evt) {
     var toDoItem = form.toDoItem.value;
     form.toDoItem.value = '';
 
+    toDoItem = [toDoItem, false];
     toDoArray.push(toDoItem);
     localStorage.setItem('listItems', JSON.stringify(toDoArray));
     makeLis();
@@ -23,9 +24,19 @@ list.addEventListener('click', function (evt) {
     var targetClass = target.getAttribute('class');
 
     switch (targetClass) {
-        //when checkBox is clicked call checked function
+        //when checkBox is clicked call checked function and save status to local storage
         case 'checkBox':
             checked(target);
+            var arrIndex = target.parentElement.getAttribute('rel');
+
+            if (target.checked) {
+                toDoArray[arrIndex][1] = true;
+            }
+            else {
+                toDoArray[arrIndex][1] = false;
+            }
+
+            localStorage.listItems = JSON.stringify(toDoArray);
             break;
 
         //when edit button is clicked calls function to edit item
@@ -72,17 +83,19 @@ function makeLis() {
 
     //loops over array to create lis
     for (var i = 0; i < toDoArray.length; i++) {
-        var item = toDoArray[i];
-        var li = e('li');
-        var checkBox = e('input', '', [['type', 'checkbox'], ['id', item], ['class', 'checkBox']]);
+        var item = toDoArray[i][0];
+        var li = e('li', '', [['rel', i]]);
+        var checkBox = e('input', '', [['type', 'checkbox'], ['class', item], ['class', 'checkBox']]);
         var span = e('span', item);
         var edit = e('button', 'Edit', [['class', 'editBtn'], ['rel', item]]);
         var del = e('button', 'Delete', [['class', 'delBtn'], ['rel', item]]);
+        checkBox.checked = toDoArray[i][1];
 
         li.appendChild(checkBox);
         li.appendChild(span);
         li.appendChild(edit);
         li.appendChild(del);
+        checked(checkBox);
         list.appendChild(li);
     }
 }
@@ -110,13 +123,12 @@ function editLi(item) {
         evt.preventDefault();
 
         var edited = evt.target;
-        var replace = edited.getAttribute('rel');
-        var replaceIndex = toDoArray.indexOf(replace);
         var li = edited.parentElement;
+        var replace = li.getAttribute('rel');
         var text = edited.toDoItem.value;
         var span = e('span', text);
 
-        toDoArray.splice(replaceIndex, 1, text);
+        toDoArray[replace].splice(0, 1, text);
 
         localStorage.listItems = JSON.stringify(toDoArray);
 
@@ -133,9 +145,9 @@ function editLi(item) {
 //when delete button is clicked removes the specified item
 function deleteLi(item) {
     if (confirm('Are you sure you want to delete this?')) {
-        var delAt = item.getAttribute('rel');
-        var delItem = toDoArray.indexOf(delAt);
-        toDoArray.splice(delItem, 1);
+        var delAt = item.parentElement.getAttribute('rel');
+
+        toDoArray.splice(delAt, 1);
 
         localStorage.listItems = JSON.stringify(toDoArray);
 
