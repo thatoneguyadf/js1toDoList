@@ -51,6 +51,23 @@ list.addEventListener('click', function (evt) {
     }
 });
 
+list.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+
+    var edited = evt.target;
+    var li = edited.parentElement;
+    var replace = li.getAttribute('rel');
+    var text = edited.toDoItem.value;
+    var span = e('span', text);
+
+    toDoArray[replace].splice(0, 1, text);
+
+    localStorage.listItems = JSON.stringify(toDoArray);
+
+    li.replaceChild(span, edited);
+    li.childNodes[2].classList.remove('hidden');
+});
+
 
 /* ================= Functions ====================== */
 //creates DOM elements
@@ -118,23 +135,6 @@ function editLi(item) {
     var editForm = e('form', '', [['id', 'editForm'], ['rel', text]]);
     var editField = e('input', '', [['type', 'text'], ['name', 'toDoItem'], ['value', text]]);
     var editSubmit = e('input', '', [['type', 'submit']]);
-
-    editForm.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-
-        var edited = evt.target;
-        var li = edited.parentElement;
-        var replace = li.getAttribute('rel');
-        var text = edited.toDoItem.value;
-        var span = e('span', text);
-
-        toDoArray[replace].splice(0, 1, text);
-
-        localStorage.listItems = JSON.stringify(toDoArray);
-
-        li.replaceChild(span, edited);
-        li.childNodes[2].classList.remove('hidden');
-    });
 
     item.classList.add('hidden');
     editForm.appendChild(editField);
