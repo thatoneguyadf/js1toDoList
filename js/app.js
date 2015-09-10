@@ -155,7 +155,7 @@ function makeLis() {
 function checked(item) {
     if (item.checked) {
         item.parentElement.classList.add('checked');
-        item.parentElement.childNodes[2].classList.add('hidlocalStorage.listItems = JSON.stringify(toDoArray);den');
+        item.parentElement.childNodes[2].classList.add('hidden');
     }
     else {
         item.parentElement.classList.remove('checked');
