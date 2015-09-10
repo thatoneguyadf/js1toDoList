@@ -5,22 +5,32 @@ var clear = document.getElementById('clear');
 var clearAll = document.getElementById('clearAll');
 var toDoArray = JSON.parse(localStorage.listItems || null) || [];
 
+form.submit.disabled = true;
 
 /* ================= Event Listeners ====================== */
+//disables submit button if text area is empty
+form.addEventListener('input', function () {
+    if (form.toDoItem.value.length > 0) {
+        form.submit.disabled = false;
+    }
+    else {
+        form.submit.disabled = true;
+    }
+});
+
 //listens for a submit event and adds a new toDoItem
 form.addEventListener('submit', function (evt) {
     evt.preventDefault();
 
     var toDoItem = form.toDoItem.value;
 
-    if (toDoItem !== '') {
-        form.toDoItem.value = '';
+    form.toDoItem.value = '';
+    form.submit.disabled = true;
 
-        toDoItem = [toDoItem, false];
-        toDoArray.push(toDoItem);
-        localStorage.setItem('listItems', JSON.stringify(toDoArray));
-        makeLis();
-    }
+    toDoItem = [toDoItem, false];
+    toDoArray.push(toDoItem);
+    localStorage.setItem('listItems', JSON.stringify(toDoArray));
+    makeLis();
 });
 
 clear.addEventListener('click', function () {
