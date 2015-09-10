@@ -1,6 +1,8 @@
 /* ================= Variables ====================== */
 var form = document.getElementById('toDoForm');
 var list = document.getElementById('toDoList');
+var clear = document.getElementById('clear');
+var clearAll = document.getElementById('clearAll');
 var toDoArray = JSON.parse(localStorage.listItems || null) || [];
 
 
@@ -19,6 +21,26 @@ form.addEventListener('submit', function (evt) {
         localStorage.setItem('listItems', JSON.stringify(toDoArray));
         makeLis();
     }
+});
+
+clear.addEventListener('click', function () {
+    for (var i = toDoArray.length - 1; i >= 0; i--) {
+       if (toDoArray[i][1]) {
+           toDoArray.splice(i, 1);
+       }
+    }
+
+    localStorage.listItems = JSON.stringify(toDoArray);
+
+    makeLis();
+});
+
+clearAll.addEventListener('click', function () {
+    toDoArray.splice(0);
+
+    localStorage.listItems = JSON.stringify(toDoArray);
+
+    makeLis();
 });
 
 //listens for clicks on lis and call corresponding functions
@@ -133,7 +155,7 @@ function makeLis() {
 function checked(item) {
     if (item.checked) {
         item.parentElement.classList.add('checked');
-        item.parentElement.childNodes[2].classList.add('hidden');
+        item.parentElement.childNodes[2].classList.add('hidlocalStorage.listItems = JSON.stringify(toDoArray);den');
     }
     else {
         item.parentElement.classList.remove('checked');

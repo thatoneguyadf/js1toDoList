@@ -26,6 +26,7 @@ body {
     border-radius: 3px;
 }
 
+
 .checked {
     color: dimgrey;
     text-decoration: line-through;
@@ -39,8 +40,20 @@ body {
     display: inline-block;
 }
 
+#toDoForm, #clear, #clearAll {
+    margin: 5px 10px 20px 0;
+}
+
 #toDoForm {
-    margin: 5px 0 20px;
+    float: left;
+}
+
+#clear, #clearAll {
+    float: right;
+}
+
+hr {
+    clear: both;
 }
 
 #toDoList {
@@ -58,7 +71,7 @@ button {
 }
 
 input, button {
-    padding: 3px;
+    padding: 5px;
 }
 
 li input {
