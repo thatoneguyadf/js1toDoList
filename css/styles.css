@@ -1,19 +1,34 @@
 body {
     background-color: black;
     margin: 0;
-    padding: 0;
+    padding: 30px 0 0 0;
+    min-height: 617px;
 }
 
 .container {
     width: 768px;
-    min-height: 629px;
     margin: 0 auto;
-    background-color: orange;
     padding: 15px;
 }
 
+.container-top {
+    color: orange;
+}
+
+.container-top h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.container-bottom {
+    min-height: 450px;
+    background-color: lightgray;
+    border-radius: 3px;
+}
+
+
 .checked {
-    color: lightgray;
+    color: dimgrey;
     text-decoration: line-through;
 }
 
@@ -25,9 +40,26 @@ body {
     display: inline-block;
 }
 
+#toDoForm, #clear, #clearAll {
+    margin: 5px 10px 20px 0;
+}
+
+#toDoForm {
+    float: left;
+}
+
+#clear, #clearAll {
+    float: right;
+}
+
+hr {
+    clear: both;
+}
+
 #toDoList {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 span {
@@ -36,4 +68,17 @@ span {
 
 button {
     margin: 3px;
+}
+
+input, button {
+    padding: 5px;
+}
+
+li input {
+    margin: 3px;
+}
+
+footer {
+    color: lightgray;
+    font-size: 0.9em;
 }
