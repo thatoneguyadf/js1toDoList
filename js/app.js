@@ -173,6 +173,7 @@ function checked(item) {
     }
 }
 
+//when edit button is clicked replace toDoItem with edit form and hide edit button
 function editLi(item) {
     var li = item.parentElement;
     var text = li.childNodes[1].textContent;
