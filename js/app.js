@@ -99,6 +99,7 @@ function checked(item) {
     }
 }
 
+//when edit button is clicked replace toDoItem with a form populated with toDoItem text
 function editLi(item) {
     var li = item.parentElement;
     var text = li.childNodes[1].textContent;
