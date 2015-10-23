@@ -3,33 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>toDoList</title>
-    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-<div class="container container-top">
-    <h1>toDoList</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+
+            <h1>toDoList</h1>
+
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <div class="row">
+                <div class="col-xs-7">
+
+                    <div class="btn"
+                         id="addToDoItem"
+                         data-toggle="modal"
+                         data-target="#liModal"
+                         style="color: blue;">
+                        <i class="fa fa-plus-circle"></i>
+                        Add toDoItem
+                    </div>
+
+                </div>
+
+                <div class="col-xs-5">
+
+                    <div class="btn pull-right"
+                         id="clear"
+                         style="color: red;">
+                        <i class="fa fa-minus-circle"></i>
+                        Clear Complete
+                    </div>
+
+                    <div class="btn pull-right"
+                         id="clearAll"
+                         style="color: red;">
+                        <i class="fa fa-minus-circle"></i>
+                        Clear All
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+
+            <hr>
+
+            <ul id="toDoList" class="list-group">
+
+            </ul>
+
+        </div>
+    </div>
 </div>
 
-<div class="container container-bottom flex">
-    <form id="toDoForm">
-        <input type="text" name="toDoItem" placeholder="What do you want to do?" />
-        <input type="submit" name="submit" value="Add toDoItem"/>
-    </form>
-
-    <button id="clear">Clear Complete</button>
-
-    <button id="clearAll">Clear All</button>
-
-    <hr>
-
-    <ul id="toDoList">
-
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <footer class="container">&copy;2015 FieldHouseLearning</footer>
+        </div>
+    </div>
 </div>
-
-<footer class="container">&copy;2015 FieldHouseLearning</footer>
 
 <!-- modal -->
 
